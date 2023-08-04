@@ -1,0 +1,6 @@
+name: SpeedrunGames
+version: ${project.version}
+main: net.trollyloki.speedrungames.SpeedrunGamesPlugin
+api-version: '1.20'
+
+author: TrollyLoki
