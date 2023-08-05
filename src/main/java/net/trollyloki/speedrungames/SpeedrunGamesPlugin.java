@@ -2,6 +2,7 @@ package net.trollyloki.speedrungames;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.trollyloki.speedrungames.revive.ReviveListener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
@@ -12,6 +13,7 @@ public class SpeedrunGamesPlugin extends JavaPlugin {
     private static SpeedrunGamesPlugin instance;
 
     private static GoalListener goalListener;
+    private static ReviveListener reviveListener;
 
     @Override
     public void onEnable() {
@@ -21,6 +23,9 @@ public class SpeedrunGamesPlugin extends JavaPlugin {
 
         goalListener = new GoalListener();
         getServer().getPluginManager().registerEvents(goalListener, this);
+
+        reviveListener = new ReviveListener();
+        getServer().getPluginManager().registerEvents(reviveListener, this);
 
     }
 
@@ -38,6 +43,10 @@ public class SpeedrunGamesPlugin extends JavaPlugin {
 
     public static GoalListener getGoalListener() {
         return goalListener;
+    }
+
+    public static ReviveListener getReviveListener() {
+        return reviveListener;
     }
 
     /**
