@@ -5,6 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -72,6 +73,11 @@ public class ReviveListener implements Listener {
         holders.put(event.getPlayer().getUniqueId(), new PlayerDeathEventHolder(event));
         event.getDrops().clear();
         event.setDroppedExp(0);
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onPlayerRespawn(@NotNull PlayerRespawnEvent event) {
+
     }
 
 }

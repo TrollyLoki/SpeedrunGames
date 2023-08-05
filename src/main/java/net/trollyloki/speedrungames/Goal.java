@@ -8,7 +8,6 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPortalEvent;
-import org.bukkit.event.player.PlayerRespawnEvent;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -36,10 +35,6 @@ public interface Goal {
     }
 
     default void onPlayerDeath(@NotNull PlayerDeathEvent event) {
-        // to be overridden
-    }
-
-    default void onPlayerRespawn(@NotNull PlayerRespawnEvent event) {
         // to be overridden
     }
 

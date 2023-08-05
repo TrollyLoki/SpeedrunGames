@@ -1,0 +1,9 @@
+revive-gui:
+  title: 'Revive?'
+  remaining: '<dark_aqua>%d revives remaining'
+  yes-item:
+    material: LIME_CONCRETE
+    name: '<green><bold>YES'
+  no-item:
+    material: RED_CONCRETE
+    name: '<red><bold>NO'

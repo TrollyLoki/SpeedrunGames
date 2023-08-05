@@ -2,6 +2,7 @@ package net.trollyloki.speedrungames;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.trollyloki.speedrungames.revive.ReviveGUI;
 import net.trollyloki.speedrungames.revive.ReviveListener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
@@ -12,8 +13,10 @@ public class SpeedrunGamesPlugin extends JavaPlugin {
 
     private static SpeedrunGamesPlugin instance;
 
-    private static GoalListener goalListener;
+    private static GameManager gameManager;
+
     private static ReviveListener reviveListener;
+    private static ReviveGUI reviveGUI;
 
     @Override
     public void onEnable() {
@@ -21,11 +24,14 @@ public class SpeedrunGamesPlugin extends JavaPlugin {
 
         saveDefaultConfig();
 
-        goalListener = new GoalListener();
-        getServer().getPluginManager().registerEvents(goalListener, this);
+        gameManager = new GameManager();
+        getServer().getPluginManager().registerEvents(gameManager, this);
+        gameManager.runTaskTimer(this, 0, 1);
 
         reviveListener = new ReviveListener();
         getServer().getPluginManager().registerEvents(reviveListener, this);
+        reviveGUI = new ReviveGUI();
+        getServer().getPluginManager().registerEvents(reviveGUI, this);
 
     }
 
@@ -33,16 +39,18 @@ public class SpeedrunGamesPlugin extends JavaPlugin {
     public void onDisable() {
         instance = null;
 
-        goalListener = null;
+        gameManager = null;
 
+        reviveListener = null;
+        reviveGUI = null;
     }
 
     public static SpeedrunGamesPlugin getInstance() {
         return instance;
     }
 
-    public static GoalListener getGoalListener() {
-        return goalListener;
+    public static GameManager getGameManager() {
+        return gameManager;
     }
 
     public static ReviveListener getReviveListener() {
